@@ -1,0 +1,32 @@
+.text-editor {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    background-color: #000;
+    color: #fff;
+    padding: 20px;
+}
+
+.text-editor textarea {
+    flex: 1;
+    background-color: #111;
+    color: #fff;
+    border: none;
+    outline: none;
+    padding: 10px;
+    font-size: 16px;
+    resize: none;
+    overflow-y: auto;
+}
+
+.text-editor .display-text {
+    flex: 1;
+    padding: 10px;
+    white-space: pre-wrap;
+    overflow-y: auto;
+    background-color: #222;
+    color: #fff;
+    border: 1px solid #333;
+    margin-top: 10px;
+    font-size: 16px;
+}

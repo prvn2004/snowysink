@@ -27,26 +27,17 @@ function App() {
     });
 
     // Update user status when connected or disconnected
-    const setUserOnlineStatus = (onlineStatus) => {
-      const userRef = usersOnlineRef.child(userId);
-      userRef.set({
-        userId,
-        online: onlineStatus,
-      });
+    userStatusDatabaseRef.on('value', (snapshot) => {
+      if (snapshot.val()) {
+        const userRef = usersOnlineRef.push();
+        userRef.set({
+          userId,
+          online: true,
+        });
 
-      userRef.onDisconnect().remove(); // Remove user from online list on disconnect
-    };
-
-    // Function to check if tab is active
-    const checkTabActive = () => {
-      setTabActive(!document.hidden);
-    };
-
-    // Polling to check tab activity every 1 second
-    const tabActiveInterval = setInterval(checkTabActive, 1000);
-
-    // Event listener for visibility change
-    document.addEventListener('visibilitychange', checkTabActive);
+        userRef.onDisconnect().remove();
+      }
+    });
 
     // Monitor changes in online users
     usersOnlineRef.on('value', (snapshot) => {
@@ -57,16 +48,20 @@ function App() {
       }
     });
 
-    // Set initial user status
-    setUserOnlineStatus(true);
+    // Handle tab visibility change
+    const handleVisibilityChange = () => {
+      setTabActive(!document.hidden);
+    };
 
-    // Cleanup function
+    document.addEventListener('visibilitychange', handleVisibilityChange);
+
+    // Cleanup event listeners
     return () => {
-      clearInterval(tabActiveInterval);
       userStatusDatabaseRef.off();
       usersOnlineRef.off();
-      document.removeEventListener('visibilitychange', checkTabActive);
-      setUserOnlineStatus(false); // Set user offline on unmount
+      document.removeEventListener('visibilitychange', handleVisibilityChange);
+      // Set user offline when component unmounts (tab closed or browser closed)
+      usersOnlineRef.child(userId).remove();
     };
   }, [userId]);
 
