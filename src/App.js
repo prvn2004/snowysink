@@ -69,17 +69,17 @@ const App = () => {
         </div>
         
         {/* Movie List Section */}
-        <div className="movies-panel">
+        {/* <div className="movies-panel">
           <h3>Movies/Series Recommandation</h3>
           <ul className="movies-list">
             {movies.map((movie, index) => (
               <li key={index} className="movies-item">
-                {movie.title} {/* Assuming each movie object has a title property */}
+                {movie.title}
               </li>
             ))}
           </ul>
         </div>
-      </div>
+      </div> */}
       
       {/* Pagination */}
       <div className="pagination">
