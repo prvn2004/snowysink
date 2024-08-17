@@ -78,8 +78,8 @@ const App = () => {
               </li>
             ))}
           </ul>
-        </div>
-      </div> */}
+        </div> */}
+      </div>
       
       {/* Pagination */}
       <div className="pagination">
