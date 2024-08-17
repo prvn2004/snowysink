@@ -1,80 +1,110 @@
 /* src/App.css */
 
 body {
-    margin: 0; /* Reset default body margin */
-  }
-  
-  .app {
-    display: flex;
-    flex-direction: column; /* Stack header and content vertically */
-    width: 100%; 
-    background-color: #fff; 
-    color: #000; 
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif; 
-  }
-  
-  .header {
-    width: 100%;
-    background-color: #fff; 
-    padding: 20px 0;
-    text-align: center; 
-  }
-  
-  .logo-container {
-    display: inline-block; 
-    padding: 10px;
-  }
-  
-  .logo-img {
-    height: 80px; 
-  }
-  
-  
-  .list-container {
-    text-align: left; /* Align list items to the left */
-    padding-left: 20px;
-    padding-right: 20px;
-  }
-  
-  .list {
-    list-style: none;
-    padding: 0;
-  }
-  
-  .list-item {
-    margin-bottom: 10px;
-    font-size: 16px;
-    font-weight: lighter;
+  margin: 0; /* Reset default body margin */
+}
+
+.app {
+  display: flex;
+  flex-direction: column; /* Stack header and content vertically */
+  width: 100%;
+  background-color: #fff;
+  color: #000;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+.header {
+  width: 100%;
+  background-color: #fff;
+  padding: 20px 0;
+  text-align: center;
+}
+
+.logo-container {
+  display: inline-block;
+  padding: 10px;
+}
+
+.logo-img {
+  height: 80px;
+}
+
+.content {
+  display: flex;
+  justify-content: space-between; /* Space between posts and movie list */
+}
+
+.list-container {
+  text-align: left; /* Align list items to the left */
+  padding-left: 20px;
+  padding-right: 20px;
+  flex: 1; /* Take up remaining space */
+}
+
+.list {
+  list-style: none;
+  padding: 0;
+}
+
+.list-item {
+  margin-bottom: 10px;
+  font-size: 16px;
+  font-weight: lighter;
+}
+
+.pagination {
+  display: flex;
+  padding: 20px;
+}
+
+.pagination button {
+  color: blue; /* Blue link color */
+  background: none; /* No background */
+  border: none; /* No border */
+  margin: 0 5px; /* Space between buttons */
+  cursor: pointer; /* Pointer cursor on hover */
+  font-size: 15px; /* Adjust font size if needed */
+  text-decoration: underline; /* Optional: underline to resemble a link */
+}
+
+.pagination button:hover {
+  text-decoration: none; /* Remove underline on hover for better UX */
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  padding-left: 20px;
+}
+
+.logo {
+  height: 59px; /* Adjust height as needed */
+  margin-right: 20px; /* Space between logo and other header content (if any) */
+}
+
+/* Movie Panel Styles */
+.movies-panel {
+  width: 300px; /* Fixed width for desktop */
+  margin-left: 20px; /* Space between posts and movie list */
+}
+
+.movies-list {
+  list-style: none;
+  padding: 0;
+}
+
+.movies-item {
+  margin: 5px 0;
+}
+
+/* Mobile styles */
+@media (max-width: 768px) {
+  .content {
+    flex-direction: column; /* Stack vertically on mobile */
   }
 
-  .pagination {
-    display: flex;
-    padding: 20px;
+  .movies-panel {
+    width: 100%; /* Full width for mobile */
+    margin-top: 20px; /* Space between posts and movie list */
   }
-  
-  .pagination button {
-    color: blue; /* Blue link color */
-    background: none; /* No background */
-    border: none; /* No border */
-    margin: 0 5px; /* Space between buttons */
-    cursor: pointer; /* Pointer cursor on hover */
-    font-size: 15px; /* Adjust font size if needed */
-    text-decoration: underline; /* Optional: underline to resemble a link */
-  }
-  
-  .pagination button:hover {
-    text-decoration: none; /* Remove underline on hover for better UX */
-  }
-
-  .header {
-    display: flex;
-    align-items: center;
-    padding-left: 20px;
-  }
-  
-  .logo {
-    height: 59px; /* Adjust height as needed */
-    margin-right: 20px; /* Space between logo and other header content (if any) */
-  }
-  
-  
+}

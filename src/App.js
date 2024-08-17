@@ -6,6 +6,7 @@ import logo from './logo.jpg'; // Import your logo image
 
 const App = () => {
   const [posts, setPosts] = useState([]);
+  const [movies, setMovies] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const postsPerPage = 7; // Number of posts per page
 
@@ -28,7 +29,19 @@ const App = () => {
       setPosts(postsData);
     };
 
+    const fetchMovies = async () => {
+      const moviesCollection = collection(db, 'movies'); // Reference to the 'movies' collection
+      const moviesSnapshot = await getDocs(moviesCollection); // Fetch the documents
+      const moviesData = moviesSnapshot.docs.map(doc => ({
+        id: doc.id, // Store document ID
+        ...doc.data(), // Spread the movie data
+      }));
+
+      setMovies(moviesData);
+    };
+
     fetchPosts();
+    fetchMovies();
   }, []);
 
   // Calculate the indices for the current posts
@@ -44,14 +57,28 @@ const App = () => {
       <header className="header">
         <img src={logo} alt="Logo" className="logo" /> {/* Add logo image */}
       </header>
-      <div className="list-container">
-        <ul className="list">
-          {currentPosts.map((post, index) => (
-            <li key={index} className="list-item">
-              {post.content}
-            </li>
-          ))}
-        </ul>
+      <div className="content">
+        <div className="list-container">
+          <ul className="list">
+            {currentPosts.map((post, index) => (
+              <li key={index} className="list-item">
+                {post.content}
+              </li>
+            ))}
+          </ul>
+        </div>
+        
+        {/* Movie List Section */}
+        <div className="movies-panel">
+          <h3>Movies/Series Recommandation</h3>
+          <ul className="movies-list">
+            {movies.map((movie, index) => (
+              <li key={index} className="movies-item">
+                {movie.title} {/* Assuming each movie object has a title property */}
+              </li>
+            ))}
+          </ul>
+        </div>
       </div>
       
       {/* Pagination */}
