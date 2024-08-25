@@ -3,6 +3,11 @@ import firebase from 'firebase/compat/app'; // Import the main Firebase App modu
 import 'firebase/compat/database'; // Import the Firebase Realtime Database module
 import  {getFirestore}  from 'firebase/firestore';
 
+//these firebase credentials are of great use if you have access of my firebase console, which you dont.
+//I know it aint a secure way of using credentials in a web application but i havent got enough time to put on that.
+//But you cant use them because i already have firebase rules setup, so no reading, no writing without permission unless authenticated.
+//Some turn arounds can be found, so please report them to me, Dont spam my database and dont fuck me up. Thanks.
+
 const firebaseConfig = {
   apiKey: "AIzaSyBFnnwZ5MUBWQ3kRRiYusonhSeJp77C20g",
   authDomain: "project24-f0148.firebaseapp.com",
